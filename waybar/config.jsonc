@@ -1,0 +1,115 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "height": 36,
+  "spacing": 5,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+
+  "modules-left": [],
+  "modules-center": [
+    "custom/rofi",
+    "custom/firefox",
+    "custom/terminal"
+  ],
+  "modules-right": [
+    "battery",
+    "clock",
+    "custom/notification"
+  ],
+
+  "custom/rofi": {
+    "tooltip": false,
+    "on-click": "rofi -show drun",
+    "format": " "
+  },
+
+  "custom/firefox": {
+    "tooltip": false,
+    "on-click": "firefox",
+    "format": " "
+  },
+
+  "custom/terminal": {
+    "tooltip": false,
+    "on-click": "kitty",
+    "format": " "
+  },
+
+  "tray": {
+    "icon-size": 24,
+    "spacing": 5,
+    "show-passive-items": true
+  },
+
+  "battery": {
+    "interval": 2,
+    "states": {
+      "warning": 25,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": " ({time})",
+    "format-plugged": " ",
+    "format-full": "  ",
+    "format-discharging": "{icon}",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "tooltip-format": "{timeTo} remaining"
+  },
+
+  "mpris": {
+    "player": "spotify",
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": {
+      "paused": ""
+    },
+    "player-icons": {
+      "default": ""
+    },
+    "max-length": 300
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p\n%D}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff66cc'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫 ",
+      "none": "󰂚 ",
+      "dnd-notification": "󰂛 ",
+      "dnd-none": "󰂛 ",
+      "inhibited-notification": "󱅫 ",
+      "inhibited-none": "󰂚 ",
+      "dnd-inhibited-notification": "󰂛 ",
+      "dnd-inhibited-none": "󰂛 "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}
